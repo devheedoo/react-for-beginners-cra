@@ -17,8 +17,18 @@ function CoinTracker() {
 
   return (
     <div>
-      <h1>The Coins!</h1>
-      {isLoading ? <strong>Loading...</strong> : null}
+      <h1>The Coins!{isLoading ? null : ` (${coins.length})`}</h1>
+      {isLoading ? (
+        <strong>Loading...</strong>
+      ) : (
+        <select>
+          {coins.map((coin, index) => (
+            <option key={index}>
+              {coin.name} ({coin.symbol}): ${coin.quotes.USD.price}
+            </option>
+          ))}
+        </select>
+      )}
     </div>
   );
 }
