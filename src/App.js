@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [counter, setCounter] = useState(0);
   const handleClick = () => setCounter((prev) => prev + 1);
-  console.log('rendered');
+  console.log('called every render');
+  useEffect(() => console.log('called only once'), []);
   return (
     <div>
       <h1>{counter}</h1>
