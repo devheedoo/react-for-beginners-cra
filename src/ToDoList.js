@@ -13,7 +13,7 @@ function ToDoList() {
     setTodo('');
   };
 
-  // useEffect(() => console.log(todos), [todos]);
+  useEffect(() => console.log(todos), [todos]);
 
   return (
     <div>
@@ -27,6 +27,12 @@ function ToDoList() {
         />
         <button>Add</button>
       </form>
+      <hr />
+      <ul>
+        {todos.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
