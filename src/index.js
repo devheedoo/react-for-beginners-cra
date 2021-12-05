@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDoList from './ToDoList';
+import CoinTracker from './CoinTracker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToDoList />
+    <CoinTracker />
   </React.StrictMode>,
   document.getElementById('root')
 );
