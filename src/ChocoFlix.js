@@ -9,13 +9,12 @@ function ChocoFlix() {
 
   const getMovies = async () => {
     const json = await (await fetch(MOVIE_SOURCE_URL)).json();
-    return json.data.movies;
+    setMovies(json.data.movies);
+    setLoading(false);
   };
 
-  useEffect(async () => {
-    const movies = await getMovies();
-    setMovies(movies);
-    setLoading(false);
+  useEffect(() => {
+    getMovies();
   }, []);
 
   return (
@@ -26,7 +25,16 @@ function ChocoFlix() {
       ) : (
         <div>
           {movies.map((movie) => (
-            <div key={movie.id}>{movie.title}</div>
+            <div key={movie.id}>
+              <img src={movie.medium_cover_image} alt={movie.title} />
+              <h2>{movie.title}</h2>
+              <p>{movie.summary}</p>
+              <ul>
+                {movie.genres.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       )}
